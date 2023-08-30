@@ -276,10 +276,13 @@ class _HomeState extends State<Home> {
               style: TextStyle(
                 color: textBlack,
                 fontWeight: FontWeight.bold,
-                fontSize: 22.sp
+                fontSize: 22.sp,
               ),
               
-              )
+              ),
+              Container(
+                child: ListView.builder(itemBuilder: (context, index){}),
+              ),
           ],
         ),
       ),
