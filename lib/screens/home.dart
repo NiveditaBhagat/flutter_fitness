@@ -281,7 +281,13 @@ class _HomeState extends State<Home> {
               
               ),
               Container(
-                child: ListView.builder(itemBuilder: (context, index){}),
+                child: ListView.builder(itemBuilder: (context, index){
+                  return Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15.r)
+                    ),
+                  );
+                }),
               )
           ],
         ),
