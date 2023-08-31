@@ -40,6 +40,7 @@ dependencies:
   firebase_auth: ^4.8.0
   cloud_firestore: ^4.9.0
   firebase_core: ^2.15.1
+  flutter_animation_progress_bar: ^2.3.1
 
 dev_dependencies:
   flutter_test:
@@ -68,6 +69,12 @@ flutter:
     - assets/finished.png
     - assets/inProgress.png
     - assets/time.png
+    - assets/cardio.png
+    - assets/arms.png
+    - assets/yoga.png
+    - assets/pilates.png
+    - assets/stretching.png
+    - assets/full_body.png
     
   #   - images/a_dot_ham.jpeg
 
