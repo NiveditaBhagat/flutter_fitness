@@ -27,7 +27,7 @@ class _MainPageState extends State<MainPage> {
     
         
     bottomNavigationBar:Container(
-    height: 70.h,
+
       child: BottomNavigationBar(
         type: BottomNavigationBarType.fixed, 
           unselectedItemColor:Colors.grey[400],
