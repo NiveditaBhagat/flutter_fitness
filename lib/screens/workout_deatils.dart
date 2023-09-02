@@ -1,16 +1,50 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:flutter_exercise/colors.dart';
+import 'package:flutter_exercise/controller/data_controller.dart';
+import 'package:flutter_exercise/model/data_model.dart';
+import 'package:flutter_exercise/screens/steps_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class WorkoutDetail extends StatefulWidget {
-  const WorkoutDetail({super.key});
+  final String title;
+final WorkoutDetailMethods methods;
+
+   WorkoutDetail({
+    required this.title,
+    required this.methods,
+   });
 
   @override
   State<WorkoutDetail> createState() => _WorkoutDetailState();
 }
 
 class _WorkoutDetailState extends State<WorkoutDetail> {
+   YogaDataFetcher dataFetcher = YogaDataFetcher();
+  List<String> WorkoutNames = [];
+  List<String> WorkoutImages = [];
+
+
+  @override
+  void initState() {
+    super.initState();
+    fetchDataFromFirestore();
+  }
+
+  Future<void> fetchDataFromFirestore() async {
+    
+   List<String> names = await widget.methods.fetchNames();
+    List<String> images = await widget.methods.fetchImages();
+    setState(() {
+      WorkoutNames = names;
+      WorkoutImages=images;
+    });
+  }
+
+
+
+
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +54,9 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
         width: 300.h,
         child: FloatingActionButton(
           backgroundColor: primaryColor,
-          onPressed: (){},
+          onPressed: (){
+            //Navigator.push(context, MaterialPageRoute(builder: (context)=> YogaList()));
+          },
            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.r)),
           child: Text(
             "START",
@@ -71,7 +107,9 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
                       
                        Padding(
                          padding:  EdgeInsets.only(left: 35.w, top: 15.h, bottom: 20.h),
-                         child: Text("Yoga", style: TextStyle(
+                         child: Text(
+                          widget.title, 
+                          style: TextStyle(
                          color: textBlack,
                          fontSize: 25.sp,
                          fontWeight: FontWeight.bold
@@ -81,7 +119,8 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
                         child: ListView.builder(
                            padding: EdgeInsets.zero,
                           itemCount: 3,
-                          itemBuilder: (context, Index){
+                          itemBuilder: (context, index){
+                              String name = WorkoutNames[index];
                             return Padding(
                               padding:  EdgeInsets.only( right: 15.w, left: 15.h, bottom: 15.h),
                               child: GestureDetector(
@@ -107,7 +146,7 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
                                       Container(
                                         height: 100.h,
                                         width: 100.w,
-                                        child: Image.asset("assets/yoga.png"),
+                                        child: Image.network(WorkoutImages[index], fit: BoxFit.cover,),
                                       ),
                                       SizedBox(width: 10.h,),
                                       Column(
@@ -115,7 +154,7 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
                                         children: [
                                           SizedBox(height: 15.h,),
                                           Text(
-                                            "Trikonasana",
+                                           name,
                                             style: TextStyle(
                                               fontSize: 20.sp,
                                               color: textBlack,

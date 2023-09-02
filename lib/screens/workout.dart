@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
+import 'package:flutter_exercise/controller/data_controller.dart';
+import 'package:flutter_exercise/model/data_model.dart';
 import 'package:flutter_exercise/screens/workout_deatils.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -11,8 +13,32 @@ class Workout extends StatefulWidget {
   @override
   State<Workout> createState() => _WorkoutState();
 }
-
+ YogaDataFetcher yogaDataFetcher = YogaDataFetcher();
+    PilatesDataFetcher pilatesDataFetcher = PilatesDataFetcher();
+    FullBodyDataFetcher fullBodyDataFetcher = FullBodyDataFetcher();
+    StrechingDataFetcher strechingDataFetcher=StrechingDataFetcher();
+     final List<WorkoutDetailMethods> workoutMethodsList = [
+  WorkoutDetailMethods(
+    fetchNames: () => yogaDataFetcher.fetchYogaNames(),
+    fetchImages: () => yogaDataFetcher.fetchYogaImages(),
+  ),
+  WorkoutDetailMethods(
+    fetchNames: () => pilatesDataFetcher.fetchPilatesNames(),
+    fetchImages: () => pilatesDataFetcher.fetchPilatesImages(),
+  ),
+  WorkoutDetailMethods(
+    fetchNames: () => fullBodyDataFetcher.fetchFullBodyNames(),
+    fetchImages: () => fullBodyDataFetcher.fetchFullBodyImages(),
+  ),
+  WorkoutDetailMethods(
+    fetchNames: () => strechingDataFetcher.fetchStretchingNames(),
+    fetchImages: () => strechingDataFetcher.fetchStretchingImages(),
+  ),
+];
 class _WorkoutState extends State<Workout> {
+
+ 
+
   final List <String> title=[
     "Yoga", 
     "Pilates", 
@@ -52,7 +78,10 @@ class _WorkoutState extends State<Workout> {
                 itemBuilder: (context,index){
                   return GestureDetector(
                     onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>WorkoutDetail()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>WorkoutDetail(
+                        title: title[index],
+                       methods: workoutMethodsList[index],
+                        )));
                     },
                     child: Padding(
                       padding:  EdgeInsets.only(top: 20.h, left: 20.w,right: 20.w),
