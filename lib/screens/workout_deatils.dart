@@ -9,10 +9,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class WorkoutDetail extends StatefulWidget {
   final String title;
 final WorkoutDetailMethods methods;
-
+  final String imagePath;
    WorkoutDetail({
     required this.title,
     required this.methods,
+    required this.imagePath,
    });
 
   @override
@@ -84,7 +85,7 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
                        decoration: BoxDecoration(
           image: DecorationImage(
             fit: BoxFit.cover,
-            image: AssetImage("assets/yoga.png"))
+            image: AssetImage(widget.imagePath))
         ),
               ),
               ),

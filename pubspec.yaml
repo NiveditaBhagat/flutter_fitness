@@ -75,6 +75,11 @@ flutter:
     - assets/pilates.png
     - assets/stretching.png
     - assets/full_body.png
+    - assets/FullBody.jpg
+    - assets/pilates_big.jpg
+    - assets/stretch_big.jpg
+    - assets/yogaBig.jpg
+
     
   #   - images/a_dot_ham.jpeg
 

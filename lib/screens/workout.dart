@@ -51,6 +51,12 @@ class _WorkoutState extends State<Workout> {
 "assets/full_body.png",
 "assets/stretching.png",
   ];
+  final List <String> ImageCont=[
+    "assets/yogaBig.jpg",
+    "assets/pilates_big.jpg",
+    "assets/FullBody.jpg",
+    "assets/stretch_big.jpg"
+  ];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -81,6 +87,7 @@ class _WorkoutState extends State<Workout> {
                       Navigator.push(context, MaterialPageRoute(builder: (context)=>WorkoutDetail(
                         title: title[index],
                        methods: workoutMethodsList[index],
+                       imagePath: ImageCont[index],
                         )));
                     },
                     child: Padding(
