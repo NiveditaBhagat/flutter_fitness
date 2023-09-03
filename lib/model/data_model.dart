@@ -1,133 +1,49 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+class WorkoutDetailMethods {
+  final Function() fetchNames;
+  final Function() fetchImages;
 
-class YogaDataFetcher {
-  final CollectionReference yogaCollection =
-      FirebaseFirestore.instance.collection('Yoga');
-
-  Future<List<String>> fetchYogaNames() async {
-    QuerySnapshot querySnapshot = await yogaCollection.get();
-
-    List<String> names = [];
-
-    for (DocumentSnapshot doc in querySnapshot.docs) {
-      String name = doc['name'] ?? ''; // Adjust the field name
-      names.add(name);
-    }
-
-    return names;
-  }
-    final CollectionReference yogaImageCollection =
-      FirebaseFirestore.instance.collection('Yoga');
-
-  Future<List<String>> fetchYogaImages() async {
-    QuerySnapshot querySnapshot = await yogaImageCollection.get();
-
-    List<String> images = [];
-
-    for (DocumentSnapshot doc in querySnapshot.docs) {
-      String image = doc['image'] ?? ''; // Adjust the field name
-      images.add(image);
-    }
-
-    return images;
-  }
-
+  WorkoutDetailMethods({
+    required this.fetchNames,
+    required this.fetchImages,
+  });
 }
 
-class PilatesDataFetcher {
-  final CollectionReference pilatesCollection =
-      FirebaseFirestore.instance.collection('Pilates');
+ final List <String> title=[
+    "Yoga", 
+    "Pilates", 
+    "Full Body", 
+    "Stretching", 
+  ];
+   final List <String> ImagePath=[
+"assets/yoga.png",
+"assets/pilates.png",
+"assets/full_body.png",
+"assets/stretching.png",
+  ];
+  final List <String> ImageCont=[
+    "assets/yogaBig.jpg",
+    "assets/pilates_big.jpg",
+    "assets/FullBody.jpg",
+    "assets/stretch_big.jpg"
+  ];
 
-  Future<List<String>> fetchPilatesNames() async {
-    QuerySnapshot querySnapshot = await pilatesCollection.get();
-
-    List<String> names = [];
-
-    for (DocumentSnapshot doc in querySnapshot.docs) {
-      String name = doc['name'] ?? ''; // Adjust the field name
-      names.add(name);
-    }
-
-    return names;
-  }
-  final CollectionReference pilatesImageCollection =
-      FirebaseFirestore.instance.collection('Pilates');
-
-  Future<List<String>> fetchPilatesImages() async {
-    QuerySnapshot querySnapshot = await pilatesImageCollection.get();
-
-    List<String> images = [];
-
-    for (DocumentSnapshot doc in querySnapshot.docs) {
-      String image = doc['image'] ?? ''; // Adjust the field name
-      images.add(image);
-    }
-
-    return images;
-  }
-}
-class StrechingDataFetcher {
-  final CollectionReference stretchingCollection =
-      FirebaseFirestore.instance.collection('Stretching');
-
-  Future<List<String>> fetchStretchingNames() async {
-    QuerySnapshot querySnapshot = await stretchingCollection.get();
-
-    List<String> names = [];
-
-    for (DocumentSnapshot doc in querySnapshot.docs) {
-      String name = doc['name'] ?? ''; // Adjust the field name
-      names.add(name);
-    }
-
-    return names;
-  }
-   final CollectionReference stretchingImageCollection =
-      FirebaseFirestore.instance.collection('Stretching');
-
-  Future<List<String>> fetchStretchingImages() async {
-    QuerySnapshot querySnapshot = await stretchingCollection.get();
-
-    List<String> images = [];
-
-    for (DocumentSnapshot doc in querySnapshot.docs) {
-      String image = doc['image'] ?? ''; // Adjust the field name
-      images.add(image);
-    }
-
-    return images;
-  }
-}
-class FullBodyDataFetcher {
-  final CollectionReference fullbodyCollection =
-      FirebaseFirestore.instance.collection('Full Body');
-
-  Future<List<String>> fetchFullBodyNames() async {
-    QuerySnapshot querySnapshot = await fullbodyCollection.get();
-
-    List<String> names = [];
-
-    for (DocumentSnapshot doc in querySnapshot.docs) {
-      String name = doc['name'] ?? ''; // Adjust the field name
-      names.add(name);
-    }
-
-    return names;
-  }
-
-   final CollectionReference fullBodyImageCollection =
-      FirebaseFirestore.instance.collection('Full Body');
-
-  Future<List<String>> fetchFullBodyImages() async {
-    QuerySnapshot querySnapshot = await fullBodyImageCollection.get();
-
-    List<String> images = [];
-
-    for (DocumentSnapshot doc in querySnapshot.docs) {
-      String image = doc['image'] ?? ''; // Adjust the field name
-      images.add(image);
-    }
-
-    return images;
-  }
-}
+  final List<String> YogaIds=[
+    "DbipvX2scmMNM1Nl6Cij",
+    "bQLCW9uaids7SfJGINmx",
+     "gIl5aTbB3KsvHPErAiw7",
+  ];
+  final List<String> PilatesIds=[
+    "EIIWp90azNegMdHmxSrv",
+    "QK98LmTqsR85RjeuSDWJ",
+    "osuVP0Hs1o7QtPfkHDpl",
+  ];
+  final List<String> FullBodyIds=[
+    "04SE9hSa9LRUUw2ka7qW",
+    "K3DzS3IJVU61oPeTg6Ap",
+    "uf7omDGzt0hziktiLT2N",
+  ];
+  final List<String> StretchIds=[
+    "N6ew0vVz1kf15xhMesmL",
+    "RpoL4YRBZXnVzoXGtUPB",
+    "lm81ArorBe9USggo1bDh",
+  ];

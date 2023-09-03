@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_exercise/exercise_provider.dart';
 import 'package:flutter_exercise/screens/main_page.dart';
+
 import 'package:flutter_exercise/screens/sign_up_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MyApp());
+  ExerciseProvider exerciseProvider = ExerciseProvider();
+   runApp(
+    ChangeNotifierProvider.value(
+      value: exerciseProvider,
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -17,7 +26,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize:  Size(375, 812),
-      builder: (context, child){
+      builder: 
+      (context, child){
       return  MaterialApp(
       debugShowCheckedModeBanner: false,
     home: child,

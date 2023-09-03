@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:flutter_exercise/controller/data_controller.dart';
+import 'package:flutter_exercise/controller/data_controller.dart';
 import 'package:flutter_exercise/model/data_model.dart';
 import 'package:flutter_exercise/screens/workout_deatils.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -36,27 +37,19 @@ class Workout extends StatefulWidget {
   ),
 ];
 class _WorkoutState extends State<Workout> {
+  
+  final List<List<dynamic>> StepsFetcherList = [
+  [fetchYogaStepsForExercise, YogaIds],
+  [fetchPilatesStepsForExercise, PilatesIds],
+  [fetchFullBodyStepsForExercise, FullBodyIds],
+  [fetchStretchStepsForExercise, StretchIds],
+];
+
+  
 
  
-
-  final List <String> title=[
-    "Yoga", 
-    "Pilates", 
-    "Full Body", 
-    "Stretching", 
-  ];
-  final List <String> ImagePath=[
-"assets/yoga.png",
-"assets/pilates.png",
-"assets/full_body.png",
-"assets/stretching.png",
-  ];
-  final List <String> ImageCont=[
-    "assets/yogaBig.jpg",
-    "assets/pilates_big.jpg",
-    "assets/FullBody.jpg",
-    "assets/stretch_big.jpg"
-  ];
+ 
+  
   @override
   Widget build(BuildContext context) {
     return SafeArea(
