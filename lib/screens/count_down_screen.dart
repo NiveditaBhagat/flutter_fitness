@@ -101,7 +101,7 @@ late List<Quote> quotes;
                     isReverse: false,
                     onComplete: (){
                      widget.player.stop();
-                     Navigator.push(context, MaterialPageRoute(builder: (context)=>StepsScreen()));
+                   
                         Alert(
                             context: context,
                             title: 'Finished!',

@@ -13,12 +13,16 @@ import 'package:provider/provider.dart';
 
 class WorkoutDetail extends StatefulWidget {
   final String title;
+  final Function FetchFunct;
+  final List<String> docIds;
 final WorkoutDetailMethods methods;
   final String imagePath;
    WorkoutDetail({
     required this.title,
     required this.methods,
     required this.imagePath,
+    required this.FetchFunct,
+    required this.docIds,
    });
 
   @override
@@ -29,8 +33,7 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
 
   List<String> WorkoutNames = [];
   List<String> WorkoutImages = [];
-
-
+ 
   @override
   void initState() {
     super.initState();
@@ -112,7 +115,13 @@ class _WorkoutDetailState extends State<WorkoutDetail> {
                                 return Padding(
                                   padding:  EdgeInsets.only( right: 15.w, left: 15.h, bottom: 15.h),
                                   child: GestureDetector(
-                                    onTap: (){},
+                                    onTap: (){
+                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>StepsScreen(
+                                        NameTitle: name,
+                                        exerciseDocumentId: widget.docIds[index],
+                                        fetchMethod: widget.FetchFunct,
+                                      )));
+                                    },
                                     child: Container(
                                       height: 110.h,
                                       width: double.infinity,

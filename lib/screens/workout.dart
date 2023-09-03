@@ -3,7 +3,7 @@ import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.da
 import 'package:flutter_exercise/controller/data_controller.dart';
 import 'package:flutter_exercise/controller/data_controller.dart';
 import 'package:flutter_exercise/model/data_model.dart';
-import 'package:flutter_exercise/screens/workout_deatils.dart';
+import 'package:flutter_exercise/screens/workout_details.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../colors.dart';
@@ -78,6 +78,8 @@ class _WorkoutState extends State<Workout> {
                   return GestureDetector(
                     onTap: (){
                       Navigator.push(context, MaterialPageRoute(builder: (context)=>WorkoutDetail(
+                        docIds: StepsFetcherList[index][1],
+                        FetchFunct: StepsFetcherList[index][0],
                         title: title[index],
                        methods: workoutMethodsList[index],
                        imagePath: ImageCont[index],

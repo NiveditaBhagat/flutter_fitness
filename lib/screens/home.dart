@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_exercise/colors.dart';
+import 'package:flutter_exercise/model/user_model.dart';
 import 'package:flutter_exercise/screens/workout.dart';
 import 'package:flutter_exercise/widgets/workout_card.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,7 +9,9 @@ import 'package:provider/provider.dart';
 import '../exercise_provider.dart';
 
 class Home extends StatefulWidget {
-  const Home({super.key});
+
+final String name;
+ Home({required this.name});
 
   @override
   State<Home> createState() => _HomeState();
@@ -34,7 +37,7 @@ class _HomeState extends State<Home> {
                        crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Hi, Jane",
+                              "Hi, ${widget.name}",
                               style: TextStyle(
                                 fontSize: 30.sp,
                                 color: textBlack,
@@ -61,6 +64,7 @@ class _HomeState extends State<Home> {
                         padding:  EdgeInsets.only( right: 25.w, top: 20.h),
                         child: CircleAvatar(
                           radius: 40.r,
+                         backgroundImage: AssetImage('assets/profile.jpg'),
                         ),
                       )
                     ],

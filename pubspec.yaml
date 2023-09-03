@@ -85,6 +85,8 @@ flutter:
     - assets/stretch_big.jpg
     - assets/yogaBig.jpg
     - assets/audio.mp3
+    - assets/profile.jpg
+
 
     
   #   - images/a_dot_ham.jpeg
