@@ -57,7 +57,7 @@ class _SettingsState extends State<Settings> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      "Track Exercises",
+                      "Track Exercises ",
                      style: TextStyle(
                       fontSize: 15.sp,
                       color: primaryColor,
